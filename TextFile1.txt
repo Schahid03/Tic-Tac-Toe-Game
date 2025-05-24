@@ -1,0 +1,70 @@
+Using Sytem;
+Ein Wahrheitswer, der angibt, ob das Gesuchte enthalten ist wie in der Aufgaben
+stelltung bereits vorgeschlagen.
+• Eine ganze Zahl mit der Position des ersten Objekts, das gesucht ist. Dann muss
+man aber einen bestimmten Zahlenwert festlegen, der für NICHTS GEFUNDEN
+steht. In C# ist das meist-1.
+• Eine ganze Zahl mit der Position des letzten Objekts, das gesucht ist. Auch da
+braucht man einen Wert für NICHT GEFUNDEN:
+• Ein Feld mit allen Positionen von Fundstellen. Findet man nichts, ist das Feld eben
+leer; hier braucht man keinen besonderen Wert zu reservieren.
+• EineReferenz auf die erste Fundstelle. Findet man nichts, wird null zurückgegeben.
+• Eine Referenz auf die letzte Fundstelle. Findet man nichts, wird null zurückgegeben.
+• Ein Feld mit Referenzen auf die Fundstellen. Findet man nichts, ist das Feld leer.
+
+
+public static List<Teilnehmer>Finde(List<Teilnehmer>alle, int id){
+
+var ergebnis = new List<Teilnehmer>();
+foreach(vartl in alle)
+if (tl.Id == id)
+ergebnis.Add(tl);
+return ergebnis;
+}
+
+A braucht 16 Tests. B testet zuerst 8 Zeilen, dann 4, dann 2, dann 1 und hat den Fehler.
+Das sind 4 Tests. Bist also 4 mal so schnell
+
+ A braucht 1048576 B ist mehr als 50 000 mal schneller
+
+public class Teilnehmer {
+public string Name;
+public int ID;
+public int HashCode() {
+int ergebnis= 0;
+if (Name != null && Name.Length>= 0) {
+ergebnis += Name[0] *101,
+}
+ergebnis +=ID;
+returnergebnis;
+}
+}
+
+var o1 = newTeilnehme() {Name= "", ID = 101 };
+var o2 = newTeilnehme() {Name= "e", ID = 0 };
+
+public override int GetHashCode() {
+int hashCode= 0;
+unchecked {
+if(Name!= null)
+hashCode += 1000000007 *
+Name.GetHashCode();
+hashCode += 1000000009 *
+ID.GetHashCode();
+}
+returnhashCode;
+}
+}
+
+public class TnHashTabelle{
+Teilenehmer[]tabelle;
+public TnHashTabelle() {
+tabelle= new Teilnehmer[100];
+}
+public void Add(Teilnehmerneu){
+tabelle[ neu.HashCode() ] = neu;
+}
+public Teilnehmer Finde(Teilnehmer gesucht) {
+return tabelle[ gesucht.HashCode() ];
+}
+}
